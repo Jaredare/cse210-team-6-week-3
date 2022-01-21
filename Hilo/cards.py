@@ -3,6 +3,11 @@ import random
 
 
 class card:
+    """A small piece of paper with intelligible writing on the front
+   
+    Attributes:
+        none
+    """
     def __init__(self):
         pass
 
