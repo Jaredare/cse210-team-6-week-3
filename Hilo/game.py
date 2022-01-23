@@ -41,8 +41,11 @@ class hilo:
             print(f"The current card is: {self.current_card}")
 
             # Take high or low
-            
-            self.h_l = input(f"Higher or lower? [h/l] ")            
+                        
+            self.h_l = input(f"Higher or lower? [h/l] ")
+
+            # Cristian De La Hoz added this code to validate the entry of highest and lowest. 
+
             if self.h_l != "h":
                 pass
                 if self.h_l != "l":
