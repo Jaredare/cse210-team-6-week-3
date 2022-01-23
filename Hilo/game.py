@@ -33,14 +33,26 @@ class hilo:
         Args:
             self (hilo): an instance of hilo.
         """
-        
+
+
         while self.is_playing:
 
             # Print the current card
             print(f"The current card is: {self.current_card}")
 
             # Take high or low
-            self.h_l = input(f"Higher or lower? [h/l] ")
+            
+            self.h_l = input(f"Higher or lower? [h/l] ")            
+            if self.h_l != "h":
+                pass
+                if self.h_l != "l":
+                    print("The entered value is not valid, re-enter it!")
+                    self.h_l = input(f"Higher or lower? [h/l] ")
+                    if self.h_l != "h":
+                        pass
+                        if self.h_l != "l":
+                            print("You have entered the wrong value again, thanks for playing!")
+                            exit()
 
             # Draw the next card and show it
             self.next_card = CARD.card_draw()
@@ -52,17 +64,17 @@ class hilo:
             else:
                 self.score -= 75
             
-            # Replace the current card with the next card to set up for the next loop.
+                # Replace the current card with the next card to set up for the next loop.
             self.current_card = self.next_card
-            
-            # Show them their current score
+                    
+                # Show them their current score
             print(f"Your score is: {self.score}")
-            
-            # Ends the game if the score is 0 or less.
+                    
+                # Ends the game if the score is 0 or less.
             if self.score <= 0:
                 self.is_playing = False
 
-            # Asks if the user wants to play again and ends the game if they say no.
+                # Asks if the user wants to play again and ends the game if they say no.
             if self.is_playing:
                 continue_ = input(f"Play again? [y/n] ")
                 self.is_playing = (continue_.lower() == "y")
@@ -70,5 +82,4 @@ class hilo:
 
         # Thanks the user for playing and displays their end score.
         print(f"Thanks for playing! Your end score was {self.score}")
-
-
+ 
