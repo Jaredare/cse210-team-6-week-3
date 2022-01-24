@@ -10,3 +10,4 @@ Team:
 Jared Brooks - drakelongtoot@gmail.com
 Liam Harris - har21091@byui.edu
 
+Cristian De La Hoz - del21026@byui.edu
