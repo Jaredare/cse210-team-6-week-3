@@ -80,7 +80,22 @@ class hilo:
                 # Asks if the user wants to play again and ends the game if they say no.
             if self.is_playing:
                 continue_ = input(f"Play again? [y/n] ")
+                
+                # Cristian De La Hoz added this code to validate the entry of "y" and "n". 
+
+                if continue_ != "y":
+                    pass
+                    if continue_ != "n":
+                        print("The entered value is not valid, re-enter it!")
+                        continue_ = input(f"Play again? [y/n] ")
+                        if continue_ != "y":
+                            pass
+                            if continue_ != "n":
+                                print("You have entered the wrong value again, thanks for playing!")
+                                exit()
+                                
                 self.is_playing = (continue_.lower() == "y")
+
             print()
 
         # Thanks the user for playing and displays their end score.
