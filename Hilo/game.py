@@ -33,15 +33,19 @@ class hilo:
         Args:
             self (hilo): an instance of hilo.
         """
-        
         while self.is_playing:
 
             # Print the current card
             print(f"The current card is: {self.current_card}")
 
             # Take high or low
+                        
             self.h_l = input(f"Higher or lower? [h/l] ")
 
+            # This code validates the input. 
+
+            self.validate("h", "l", self.h_l, f"Higher or lower? [h/l] ")
+            
             # Draw the next card and show it
             self.next_card = CARD.card_draw()
             print(f"Next card was: {self.next_card}")
@@ -54,10 +58,10 @@ class hilo:
             
             # Replace the current card with the next card to set up for the next loop.
             self.current_card = self.next_card
-            
+                    
             # Show them their current score
             print(f"Your score is: {self.score}")
-            
+                    
             # Ends the game if the score is 0 or less.
             if self.score <= 0:
                 self.is_playing = False
@@ -65,10 +69,29 @@ class hilo:
             # Asks if the user wants to play again and ends the game if they say no.
             if self.is_playing:
                 continue_ = input(f"Play again? [y/n] ")
+                
+            # This code validates the input.  
+                self.validate("y", "n", continue_, f"Play again? [y/n] ")
+                                
                 self.is_playing = (continue_.lower() == "y")
+
             print()
 
         # Thanks the user for playing and displays their end score.
         print(f"Thanks for playing! Your end score was {self.score}")
+ 
+    # This method validates the input. 
+    # This code is reusable and is useful for any validation in a program that uses an input.
 
+    def validate(self, Vw, Vx, Vy, Vz):
 
+        if Vy != Vw:
+            pass
+            if Vy != Vx:
+                print("The entered value is not valid, re-enter it!")
+                Vy = input(Vz)
+                if Vy != Vw:
+                    pass
+                    if Vy != Vx:
+                        print("You have entered the wrong value again, thanks for playing!")
+                        exit()        
