@@ -33,8 +33,6 @@ class hilo:
         Args:
             self (hilo): an instance of hilo.
         """
-
-
         while self.is_playing:
 
             # Print the current card
@@ -44,19 +42,10 @@ class hilo:
                         
             self.h_l = input(f"Higher or lower? [h/l] ")
 
-            # Cristian De La Hoz added this code to validate the entry of highest and lowest. 
+            # This code validates the input. 
 
-            if self.h_l != "h":
-                pass
-                if self.h_l != "l":
-                    print("The entered value is not valid, re-enter it!")
-                    self.h_l = input(f"Higher or lower? [h/l] ")
-                    if self.h_l != "h":
-                        pass
-                        if self.h_l != "l":
-                            print("You have entered the wrong value again, thanks for playing!")
-                            exit()
-
+            self.validate("h", "l", self.h_l, f"Higher or lower? [h/l] ")
+            
             # Draw the next card and show it
             self.next_card = CARD.card_draw()
             print(f"Next card was: {self.next_card}")
@@ -67,32 +56,22 @@ class hilo:
             else:
                 self.score -= 75
             
-                # Replace the current card with the next card to set up for the next loop.
+            # Replace the current card with the next card to set up for the next loop.
             self.current_card = self.next_card
                     
-                # Show them their current score
+            # Show them their current score
             print(f"Your score is: {self.score}")
                     
-                # Ends the game if the score is 0 or less.
+            # Ends the game if the score is 0 or less.
             if self.score <= 0:
                 self.is_playing = False
 
-                # Asks if the user wants to play again and ends the game if they say no.
+            # Asks if the user wants to play again and ends the game if they say no.
             if self.is_playing:
                 continue_ = input(f"Play again? [y/n] ")
                 
-                # Cristian De La Hoz added this code to validate the entry of "y" and "n". 
-
-                if continue_ != "y":
-                    pass
-                    if continue_ != "n":
-                        print("The entered value is not valid, re-enter it!")
-                        continue_ = input(f"Play again? [y/n] ")
-                        if continue_ != "y":
-                            pass
-                            if continue_ != "n":
-                                print("You have entered the wrong value again, thanks for playing!")
-                                exit()
+            # This code validates the input.  
+                self.validate("y", "n", continue_, f"Play again? [y/n] ")
                                 
                 self.is_playing = (continue_.lower() == "y")
 
@@ -101,3 +80,18 @@ class hilo:
         # Thanks the user for playing and displays their end score.
         print(f"Thanks for playing! Your end score was {self.score}")
  
+    # This method validates the input. 
+    # This code is reusable and is useful for any validation in a program that uses an input.
+
+    def validate(self, Vw, Vx, Vy, Vz):
+
+        if Vy != Vw:
+            pass
+            if Vy != Vx:
+                print("The entered value is not valid, re-enter it!")
+                Vy = input(Vz)
+                if Vy != Vw:
+                    pass
+                    if Vy != Vx:
+                        print("You have entered the wrong value again, thanks for playing!")
+                        exit()        
